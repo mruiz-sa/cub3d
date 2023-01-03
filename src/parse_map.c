@@ -1,25 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.c                                            :+:      :+:    :+:   */
+/*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mruiz-sa <mruiz-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/22 12:14:18 by mruiz-sa          #+#    #+#             */
-/*   Updated: 2023/01/03 10:20:13 by mruiz-sa         ###   ########.fr       */
+/*   Created: 2023/01/03 09:23:08 by mruiz-sa          #+#    #+#             */
+/*   Updated: 2023/01/03 11:19:14 by mruiz-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 #include "libft.h"
+#include <stdlib.h>
+#include <fcntl.h>
 
-int	main(int ac, char **av)
+int	parse_map(char *av, t_state *state)
 {
-	t_state	state;
-
-	if (!init_state(&state))
-		return (exit_with_error(&state, "Error initializing"));
-	if (arg_checker(ac, av))
-		return (1);
-	parse_map(av[1], &state);
+	state->map->fd = -1;
+	state->map->fd = open(av, O_RDONLY);
+	if (state->map->fd == -1)
+		file_error(av);
+	exit_with_error(state, "PRUEBA");
+	/* map.map = ft_split(); */
+	return (1);
 }

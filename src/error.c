@@ -1,25 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.c                                            :+:      :+:    :+:   */
+/*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mruiz-sa <mruiz-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/22 12:14:18 by mruiz-sa          #+#    #+#             */
-/*   Updated: 2023/01/03 10:20:13 by mruiz-sa         ###   ########.fr       */
+/*   Created: 2023/01/03 09:43:14 by mruiz-sa          #+#    #+#             */
+/*   Updated: 2023/01/03 11:03:22 by mruiz-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-#include "libft.h"
+#include<stdio.h>
+#include<stdlib.h>
 
-int	main(int ac, char **av)
+void	file_error(char *av)
 {
-	t_state	state;
+	printf("File not found: %s\n", av);
+	exit(0);
+}
 
-	if (!init_state(&state))
-		return (exit_with_error(&state, "Error initializing"));
-	if (arg_checker(ac, av))
-		return (1);
-	parse_map(av[1], &state);
+int	exit_with_error(t_state *state, char *str)
+{
+	printf("%s\n", str);
+	free_state(state);
+	exit(0);
+	return (0);
 }

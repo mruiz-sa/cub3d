@@ -1,25 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.c                                            :+:      :+:    :+:   */
+/*   state.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mruiz-sa <mruiz-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/22 12:14:18 by mruiz-sa          #+#    #+#             */
-/*   Updated: 2023/01/03 10:20:13 by mruiz-sa         ###   ########.fr       */
+/*   Created: 2023/01/03 10:03:42 by mruiz-sa          #+#    #+#             */
+/*   Updated: 2023/01/03 11:04:12 by mruiz-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
 #include "libft.h"
+#include "cub3d.h"
+#include <stdlib.h>
 
-int	main(int ac, char **av)
+int	init_state(t_state *state)
 {
-	t_state	state;
+	ft_memset(state, 0, sizeof(t_state));
+	state->map = ft_calloc(1, sizeof(t_map));
+	return (1);
+}
 
-	if (!init_state(&state))
-		return (exit_with_error(&state, "Error initializing"));
-	if (arg_checker(ac, av))
-		return (1);
-	parse_map(av[1], &state);
+int	free_state(t_state *state)
+{
+	if (!state)
+		return (0);
+	if (state->map->fd != -1)
+		close(state->map->fd);
+	free(state->map);
+	ft_memset(state, 0, sizeof(t_state));
+	return (1);
 }
