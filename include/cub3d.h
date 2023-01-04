@@ -6,7 +6,7 @@
 /*   By: mruiz-sa <mruiz-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 12:31:05 by mruiz-sa          #+#    #+#             */
-/*   Updated: 2023/01/04 11:17:49 by mruiz-sa         ###   ########.fr       */
+/*   Updated: 2023/01/04 12:30:00 by mruiz-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 typedef struct s_file
 {
-	int	fd;
-	int	size;
+	int		fd;
+	int		size;
 }	t_file;
 typedef struct s_map{
 	char	**cub;
@@ -35,6 +35,6 @@ int		exit_with_error(t_state *state, char *str);
 int		init_state(t_state *state);
 int		free_state(t_state *state);
 int		file_size(int fd);
-char	*ft_get_next_line(int fd);
+char	*get_next_line(int fd);
 
 #endif

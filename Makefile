@@ -6,7 +6,7 @@
 #    By: mruiz-sa <mruiz-sa@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/22 10:34:08 by mruiz-sa          #+#    #+#              #
-#    Updated: 2023/01/04 11:12:45 by mruiz-sa         ###   ########.fr        #
+#    Updated: 2023/01/04 12:31:29 by mruiz-sa         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,6 +14,7 @@ NAME = cub3d
 SRC =	src/checkers.c \
 		src/cub3d.c \
 		src/error.c \
+		src/file_tools.c \
 		src/get_next_line.c \
 		src/parse_map.c \
 		src/state.c \
