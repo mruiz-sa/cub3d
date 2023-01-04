@@ -6,7 +6,7 @@
 /*   By: mruiz-sa <mruiz-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 09:23:08 by mruiz-sa          #+#    #+#             */
-/*   Updated: 2023/01/03 11:19:14 by mruiz-sa         ###   ########.fr       */
+/*   Updated: 2023/01/04 11:18:08 by mruiz-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,20 @@
 
 int	parse_map(char *av, t_state *state)
 {
-	state->map->fd = -1;
-	state->map->fd = open(av, O_RDONLY);
-	if (state->map->fd == -1)
+	t_file	file;
+	char	**my_map;
+	int		i;
+
+	i = 0;
+	file.fd = open(av, O_RDONLY);
+	if (file.fd == -1)
 		file_error(av);
+	file.size = file_size(file.fd);
+	my_map = (char **)ft_calloc(file.size + 1, sizeof(char *));
+	if (!my_map)
+		return (1);
+	printf("%s\n", ft_get_next_line(file.fd));
+	my_map[i] = 0;
 	exit_with_error(state, "PRUEBA");
-	/* map.map = ft_split(); */
-	return (1);
+	return (0);
 }

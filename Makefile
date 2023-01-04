@@ -1,12 +1,12 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
+#    Makefile_long                                      :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: mruiz-sa <mruiz-sa@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/22 10:34:08 by mruiz-sa          #+#    #+#              #
-#    Updated: 2023/01/03 11:54:55 by mruiz-sa         ###   ########.fr        #
+#    Updated: 2023/01/04 11:12:45 by mruiz-sa         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,8 +42,8 @@ fclean: clean
 	@make clean -C ./minilibx
 	@make clean -C ./libft
 	@rm -rf $(NAME)
-	@rm -rf libmlx.a
-	@rm -rf libft.a
+	@rm -rf ./minilibx/libmlx.a
+	@rm -rf ./libft/libft.a
 	@rm -rf cub3d.a
 
 re: fclean all

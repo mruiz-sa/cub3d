@@ -6,102 +6,74 @@
 /*   By: mruiz-sa <mruiz-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 11:27:53 by mruiz-sa          #+#    #+#             */
-/*   Updated: 2023/01/03 11:38:47 by mruiz-sa         ###   ########.fr       */
+/*   Updated: 2023/01/04 11:17:34 by mruiz-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "cub3d.h"
+#include <stdlib.h>
+#include <unistd.h>
 
-char	*ft_cut_line(char *save)
+char	*ft_aux(char *line, char c)
 {
-	int		i;
 	char	*str;
+	int		i;
 
 	i = 0;
-	if (!save[i])
-		return (NULL);
-	while (save[i] && save[i] != '\n')
+	while (line[i])
 		i++;
-	str = (char *)malloc(sizeof (char) * (i + 2));
+	str = (char *)malloc(2 + i);
 	if (!str)
 		return (NULL);
-	i = 0;
-	while (save[i] && save[i] != '\n')
-	{
-		str[i] = save[i];
-		i++;
-	}
-	if (save[i] == '\n')
-	{
-		str[i] = save[i];
-		i++;
-	}
-	str[i] = '\0';
-	return (str);
+	i = -1;
+	while (line[++i])
+		str[i] = line[i];
+	str[i] = c;
+	str[i + 1] = 0;
+	return (free(line), str);
 }
 
-char	*ft_cut_save(char *save)
+int	ft_check_ch(char *str)
 {
-	int		i;
-	int		n;
-	char	*str;
+	int	i;
 
 	i = 0;
-	while (save[i] && save[i] != '\n')
-		i++;
-	if (!save[i])
-	{
-		free(save);
-		return (NULL);
-	}
-	str = (char *)malloc(sizeof(char) * (ft_strlen(save) - i + 1));
 	if (!str)
-		return (NULL);
-	i++;
-	n = 0;
-	while (save[i])
-		str[n++] = save[i++];
-	str[n] = '\0';
-	free(save);
-	return (str);
-}
-
-char	*ft_read(int fd, char *save)
-{
-	char	*buff;
-	int		bytes;
-
-	buff = malloc(sizeof (char) * (BUFFER_SIZE + 1));
-	if (!buff)
-		return (NULL);
-	bytes = 1;
-	while (bytes != 0 && (!ft_strchr(save, '\n')))
-	{
-		bytes = read(fd, buff, BUFFER_SIZE);
-		if (bytes == -1)
-		{
-			free(buff);
-			return (NULL);
-		}
-		buff[bytes] = '\0';
-		save = ft_strjoin(save, buff);
-	}
-	free(buff);
-	return (save);
-}
-
-char	*get_next_line(int fd)
-{
-	static char		*save;
-	char			*line;
-
-	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (0);
-	save = ft_read(fd, save);
-	if (!save)
+	while (str[i])
+	{
+		if (str[i] == '\n' || str[i] == '\0')
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
+char	*ft_get_next_line(int fd)
+{
+	char	*line;
+	char	buff;
+	int		filled;
+
+	if (fd < 0)
 		return (NULL);
-	line = ft_cut_line(save);
-	save = ft_cut_save(save);
+	line = malloc(1);
+	if (!line)
+		return (NULL);
+	line[0] = 0;
+	filled = 1;
+	while (!(ft_check_ch(line)) && filled != 0)
+	{
+		filled = read(fd, &buff, 1);
+		if (filled == 0)
+		{
+			if (line[0] == '\0')
+				return (free(line), NULL);
+			return (line);
+		}
+		if (filled < 0)
+			return (free(line), NULL);
+		line = ft_aux(line, buff);
+	}
 	return (line);
 }

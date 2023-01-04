@@ -6,7 +6,7 @@
 /*   By: mruiz-sa <mruiz-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 12:19:16 by mruiz-sa          #+#    #+#             */
-/*   Updated: 2023/01/03 09:24:42 by mruiz-sa         ###   ########.fr       */
+/*   Updated: 2023/01/04 09:19:15 by mruiz-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static int	ext_checker(char *str)
 int	arg_checker(int ac, char **av)
 {
 	if (ac != 2)
-		return (printf("Invalid arg number\n"), 1);
+		return (printf("Invalid arguments\n"), 1);
 	else
 	{
 		if (ext_checker(av[1]))

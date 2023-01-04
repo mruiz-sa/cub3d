@@ -1,31 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   state.c                                            :+:      :+:    :+:   */
+/*   file_tools.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mruiz-sa <mruiz-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/03 10:03:42 by mruiz-sa          #+#    #+#             */
-/*   Updated: 2023/01/04 10:06:09 by mruiz-sa         ###   ########.fr       */
+/*   Created: 2023/01/04 09:32:43 by mruiz-sa          #+#    #+#             */
+/*   Updated: 2023/01/04 10:32:29 by mruiz-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
 #include "cub3d.h"
-#include <stdlib.h>
+#include "libft.h"
+#include <unistd.h>
 
-int	init_state(t_state *state)
+int	file_size(int fd)
 {
-	ft_memset(state, 0, sizeof(t_state));
-	state->map = ft_calloc(1, sizeof(t_map));
-	return (1);
-}
+	char	c;
+	int		size;
 
-int	free_state(t_state *state)
-{
-	if (!state)
-		return (0);
-	free(state->map);
-	ft_memset(state, 0, sizeof(t_state));
-	return (1);
+	size = 0;
+	while (read(fd, &c, 1))
+	{
+		if (c == '\n')
+			size++;
+	}
+	return (size);
 }
