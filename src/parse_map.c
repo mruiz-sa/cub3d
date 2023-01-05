@@ -6,7 +6,7 @@
 /*   By: mruiz-sa <mruiz-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 09:23:08 by mruiz-sa          #+#    #+#             */
-/*   Updated: 2023/01/04 12:26:57 by mruiz-sa         ###   ########.fr       */
+/*   Updated: 2023/01/05 09:53:23 by mruiz-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ int	parse_map(char *av, t_state *state)
 	}
 	my_map[i] = 0;
 	close(file.fd);
+	free_array(my_map);
 	exit_with_error(state, "PRUEBA");
 	return (0);
 }

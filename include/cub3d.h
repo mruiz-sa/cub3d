@@ -6,7 +6,7 @@
 /*   By: mruiz-sa <mruiz-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 12:31:05 by mruiz-sa          #+#    #+#             */
-/*   Updated: 2023/01/04 12:30:00 by mruiz-sa         ###   ########.fr       */
+/*   Updated: 2023/01/05 09:50:32 by mruiz-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ typedef struct s_state
 int		arg_checker(int ac, char **av);
 int		parse_map(char *av, t_state *state);
 void	file_error(char *av);
+void	free_array(char **array);
 int		exit_with_error(t_state *state, char *str);
 int		init_state(t_state *state);
 int		free_state(t_state *state);
