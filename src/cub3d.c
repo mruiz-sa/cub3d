@@ -6,7 +6,7 @@
 /*   By: mruiz-sa <mruiz-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 12:14:18 by mruiz-sa          #+#    #+#             */
-/*   Updated: 2023/01/03 10:20:13 by mruiz-sa         ###   ########.fr       */
+/*   Updated: 2023/01/05 10:29:00 by mruiz-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,5 @@ int	main(int ac, char **av)
 		return (exit_with_error(&state, "Error initializing"));
 	if (arg_checker(ac, av))
 		return (1);
-	parse_map(av[1], &state);
+	parse_file(av[1], &state);
 }

@@ -6,7 +6,7 @@
 /*   By: mruiz-sa <mruiz-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 11:27:53 by mruiz-sa          #+#    #+#             */
-/*   Updated: 2023/01/04 12:24:42 by mruiz-sa         ###   ########.fr       */
+/*   Updated: 2023/01/05 10:44:46 by mruiz-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-#define BUFFER_SIZE 10
+#define BUFFER_SIZE 1
 
 char	*gnl_ft_strchr(char *s, int c)
 {
@@ -140,7 +140,7 @@ char	*ft_read(int fd, char *save)
 	return (save);
 }
 
-char	*get_next_line(int fd)
+char	*get_next_line(int fd, int flag)
 {
 	static char		*save;
 	char			*line;
@@ -152,5 +152,7 @@ char	*get_next_line(int fd)
 		return (NULL);
 	line = ft_cut_line(save);
 	save = ft_cut_save(save);
+	if (flag == 1 && save)
+		free(save);
 	return (line);
 }
