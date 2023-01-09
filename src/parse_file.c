@@ -6,7 +6,7 @@
 /*   By: mruiz-sa <mruiz-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 09:23:08 by mruiz-sa          #+#    #+#             */
-/*   Updated: 2023/01/05 10:45:20 by mruiz-sa         ###   ########.fr       */
+/*   Updated: 2023/01/09 13:24:30 by mruiz-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ int	parse_file(char *av, t_state *state)
 	my_map[i] = 0;
 	get_next_line(file.fd, 1);
 	close(file.fd);
+	texture_errors(state, my_map);
 	free_array(my_map);
 	exit_with_error(state, "PRUEBA");
 	return (0);

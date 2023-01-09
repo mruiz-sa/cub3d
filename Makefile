@@ -1,12 +1,12 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    Makefile_long                                      :+:      :+:    :+:    #
+#    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: mruiz-sa <mruiz-sa@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/22 10:34:08 by mruiz-sa          #+#    #+#              #
-#    Updated: 2023/01/05 09:55:55 by mruiz-sa         ###   ########.fr        #
+#    Updated: 2023/01/09 09:29:49 by mruiz-sa         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ SRC =	src/array.c \
 		src/error.c \
 		src/file_tools.c \
 		src/get_next_line.c \
-		src/parse_map.c \
+		src/parse_file.c \
 		src/state.c \
 
 CC = gcc
