@@ -6,7 +6,7 @@
 /*   By: mruiz-sa <mruiz-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 12:31:05 by mruiz-sa          #+#    #+#             */
-/*   Updated: 2023/01/09 13:14:14 by mruiz-sa         ###   ########.fr       */
+/*   Updated: 2023/01/10 11:59:02 by mruiz-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,19 @@
 
 typedef struct s_txt
 {
-	int		north_flg;
-	int		south_flg;
-	int		east_flg;
-	int		west_flg;
 	char	*north;
 	char	*south;
 	char	*east;
 	char	*west;
 }	t_txt;
+
+typedef struct s_color
+{
+	int		floor[3];
+	int		ceiling[3];
+	char	*ceiling_line;
+	char	*floor_line;
+}	t_color;
 typedef struct s_file
 {
 	int				fd;
@@ -49,9 +53,13 @@ int		init_state(t_state *state);
 int		free_state(t_state *state);
 int		file_size(int fd);
 char	*get_next_line(int fd, int flag);
-int		texture_errors(t_state *state, char **my_map);
-int		free_textures(t_txt *txt);
+int		txt_errors(t_state *state, char **my_map);
+int		free_txt(t_txt *txt);
+int		free_color(t_color *color);
 int		skip(char *str, int start);
 int		find_space(char *str);
+void	init_txt_color(t_txt *txt, t_color *color);
+int		find_char_from(char *str, char c, int start);
+int		assign_colors(t_color *color, char *line);
 
 #endif

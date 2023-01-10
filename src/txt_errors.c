@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   texture_errors.c                                   :+:      :+:    :+:   */
+/*   txt_errors.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mruiz-sa <mruiz-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 09:58:11 by mruiz-sa          #+#    #+#             */
-/*   Updated: 2023/01/09 13:33:30 by mruiz-sa         ###   ########.fr       */
+/*   Updated: 2023/01/10 14:18:55 by mruiz-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,44 +14,21 @@
 #include "cub3d.h"
 #include <fcntl.h>
 
-static void	init_textures(t_txt *txt)
+static int	assign_route(t_txt *txt, char *line)
 {
-	txt->north = NULL;
-	txt->south = NULL;
-	txt->east = NULL;
-	txt->west = NULL;
-	txt->north_flg = 0;
-	txt->south_flg = 0;
-	txt->east_flg = 0;
-	txt->west_flg = 0;
-}
-
-static void	assign_route(t_txt *txt, char *line)
-{
-	if (line && !ft_strncmp(line, "NO", 2) && !txt->north_flg)
-	{
+	if (line && !ft_strncmp(line, "NO", 2) && !txt->north)
 		txt->north = ft_substr(line, skip(line, find_space(line)),
 				ft_strlen(line) - skip(line, find_space(line)) - 1);
-		txt->north_flg = 1;
-	}
-	else if (line && !ft_strncmp(line, "SO", 2) && !txt->south_flg)
-	{
+	else if (line && !ft_strncmp(line, "SO", 2) && !txt->south)
 		txt->south = ft_substr(line, skip(line, find_space(line)),
 				ft_strlen(line) - skip(line, find_space(line)) - 1);
-		txt->south_flg = 1;
-	}
-	else if (line && !ft_strncmp(line, "WE", 2) && !txt->west_flg)
-	{
+	else if (line && !ft_strncmp(line, "WE", 2) && !txt->west)
 		txt->west = ft_substr(line, skip(line, find_space(line)),
 				ft_strlen(line) - skip(line, find_space(line)) - 1);
-		txt->west_flg = 1;
-	}
-	else if (line && !ft_strncmp(line, "EA", 2) && !txt->east_flg)
-	{
+	else if (line && !ft_strncmp(line, "EA", 2) && !txt->east)
 		txt->east = ft_substr(line, skip(line, find_space(line)),
 				ft_strlen(line) - skip(line, find_space(line)) - 1);
-		txt->east_flg = 1;
-	}
+	return (1);
 }
 
 static int	txt_file_check(char *route)
@@ -79,14 +56,31 @@ static int	check_paths(t_txt *txt)
 	return (1);
 }
 
-int	texture_errors(t_state *state, char **my_map)
+static int	txt_check(t_state *state, t_txt *txt, char **my_map)
+{
+	if (!txt->north || !txt->south || !txt->west || !txt->east)
+	{
+		free_txt(txt);
+		free_array(my_map);
+		exit_with_error(state, "ERROR: MISSING TEXTURE");
+	}
+	if (!check_paths(txt))
+	{
+		free_txt(txt);
+		free_array(my_map);
+		exit_with_error(state, "ERROR: INVALID TEXTURE FILE");
+	}
+	return (1);
+}
+
+int	txt_errors(t_state *state, char **my_map)
 {
 	t_txt	txt;
+	t_color	color;
 	int		i;
 
 	i = 0;
-	(void)state;
-	init_textures(&txt);
+	init_txt_color(&txt, &color);
 	while (my_map[i])
 	{
 		if (my_map[i][0] == '\n')
@@ -94,21 +88,18 @@ int	texture_errors(t_state *state, char **my_map)
 		else
 		{
 			assign_route(&txt, my_map[i]);
+			if (!assign_colors(&color, my_map[i]))
+			{
+				free_array(my_map);
+				free_txt(&txt);
+				free_color(&color);
+				exit_with_error(state, "ERROR: COLOUR ERROR");
+			}
 			i++;
 		}
 	}
-	if (!txt.north_flg || !txt.south_flg || !txt.west_flg || !txt.east_flg)
-	{
-		free_textures(&txt);
-		free_array(my_map);
-		exit_with_error(state, "MISSING TEXTURE");
-	}
-	if (!check_paths(&txt))
-	{
-		free_textures(&txt);
-		free_array(my_map);
-		exit_with_error(state, "INVALID TEXTURE FILE");
-	}
-	free_textures(&txt);
+	txt_check(state, &txt, my_map);
+	free_txt(&txt);
+	free_color(&color);
 	return (1);
 }
