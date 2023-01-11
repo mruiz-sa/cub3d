@@ -6,7 +6,7 @@
 /*   By: mruiz-sa <mruiz-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 09:58:11 by mruiz-sa          #+#    #+#             */
-/*   Updated: 2023/01/11 11:08:34 by mruiz-sa         ###   ########.fr       */
+/*   Updated: 2023/01/11 11:27:31 by mruiz-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ int	check_and_free(t_state *state, t_txt *txt, t_color *color, char **my_map)
 	return (1);
 }
 
-int	txt_errors(t_state *state, char **my_map)
+int	txt_color_errors(t_state *state, char **my_map)
 {
 	t_txt	txt;
 	t_color	color;

@@ -1,20 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   str_tools.h                                        :+:      :+:    :+:   */
+/*   gnl_ft_strchr.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mruiz-sa <mruiz-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/11 11:07:19 by mruiz-sa          #+#    #+#             */
-/*   Updated: 2023/01/11 12:32:45 by mruiz-sa         ###   ########.fr       */
+/*   Created: 2023/01/11 11:18:58 by mruiz-sa          #+#    #+#             */
+/*   Updated: 2023/01/11 11:19:17 by mruiz-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef STR_TOOLS_H
-# define STR_TOOLS_H
+#include "libft.h"
 
-int		skip(char *str, int start);
-int		find_space(char *str);
-void	check_last_line(char *str, char **my_map, t_state *state, t_file *file);
+char	*gnl_ft_strchr(char *s, int c)
+{
+	int		i;
 
-#endif
+	i = 0;
+	if (!s)
+		return (NULL);
+	if (c == '\0')
+		return ((char *)&s[i]);
+	while (s[i])
+	{
+		if (s[i] == (char) c)
+			return ((char *)&s[i]);
+		i++;
+	}
+	return (NULL);
+}

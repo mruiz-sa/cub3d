@@ -6,7 +6,7 @@
 /*   By: mruiz-sa <mruiz-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 09:29:59 by mruiz-sa          #+#    #+#             */
-/*   Updated: 2023/01/11 11:12:31 by mruiz-sa         ###   ########.fr       */
+/*   Updated: 2023/01/11 13:18:14 by mruiz-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ void	free_array(char **array)
 			free(array[i]);
 		i++;
 	}
+	i = 0;
 	if (array)
 		free(array);
 }

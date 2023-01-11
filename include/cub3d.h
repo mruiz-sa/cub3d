@@ -6,7 +6,7 @@
 /*   By: mruiz-sa <mruiz-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 12:31:05 by mruiz-sa          #+#    #+#             */
-/*   Updated: 2023/01/11 11:07:47 by mruiz-sa         ###   ########.fr       */
+/*   Updated: 2023/01/11 13:26:24 by mruiz-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ typedef struct s_state
 }	t_state;
 
 int		arg_checker(int ac, char **av);
-char	*get_next_line(int fd, int flag);
+char	*get_next_line(int fd);
 void	init_txt_color(t_txt *txt, t_color *color);
 int		assign_colors(t_color *color, char *line);
 

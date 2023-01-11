@@ -1,20 +1,15 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   str_tools.h                                        :+:      :+:    :+:   */
+/*   map_errors.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mruiz-sa <mruiz-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/11 11:07:19 by mruiz-sa          #+#    #+#             */
-/*   Updated: 2023/01/11 12:32:45 by mruiz-sa         ###   ########.fr       */
+/*   Created: 2023/01/11 11:29:58 by mruiz-sa          #+#    #+#             */
+/*   Updated: 2023/01/11 11:53:41 by mruiz-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef STR_TOOLS_H
-# define STR_TOOLS_H
+#include "cub3d.h"
+#include "free_error.h"
 
-int		skip(char *str, int start);
-int		find_space(char *str);
-void	check_last_line(char *str, char **my_map, t_state *state, t_file *file);
-
-#endif
