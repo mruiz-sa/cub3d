@@ -1,27 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.c                                            :+:      :+:    :+:   */
+/*   str_tools.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mruiz-sa <mruiz-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/22 12:14:18 by mruiz-sa          #+#    #+#             */
-/*   Updated: 2023/01/11 11:05:40 by mruiz-sa         ###   ########.fr       */
+/*   Created: 2023/01/11 11:07:19 by mruiz-sa          #+#    #+#             */
+/*   Updated: 2023/01/11 11:07:43 by mruiz-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
-#include "state.h"
-#include "free_error.h"
-#include "file.h"
+#ifndef STR_TOOLS_H
+# define STR_TOOLS_H
 
-int	main(int ac, char **av)
-{
-	t_state	state;
+int		skip(char *str, int start);
+int		find_space(char *str);
 
-	if (!init_state(&state))
-		return (exit_with_error(&state, "Error initializing"));
-	if (arg_checker(ac, av))
-		return (1);
-	parse_file(av[1], &state);
-}
+#endif

@@ -6,13 +6,11 @@
 /*   By: mruiz-sa <mruiz-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 12:19:16 by mruiz-sa          #+#    #+#             */
-/*   Updated: 2023/01/09 11:29:57 by mruiz-sa         ###   ########.fr       */
+/*   Updated: 2023/01/11 11:10:11 by mruiz-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <fcntl.h>
-#include <unistd.h>
 
 int	ext_checker(char *str, char *ext)
 {

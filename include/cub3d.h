@@ -6,7 +6,7 @@
 /*   By: mruiz-sa <mruiz-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 12:31:05 by mruiz-sa          #+#    #+#             */
-/*   Updated: 2023/01/10 11:59:02 by mruiz-sa         ###   ########.fr       */
+/*   Updated: 2023/01/11 11:07:47 by mruiz-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,22 +44,8 @@ typedef struct s_state
 }	t_state;
 
 int		arg_checker(int ac, char **av);
-int		ext_checker(char *str, char *ext);
-int		parse_file(char *av, t_state *state);
-void	file_error(char *av);
-void	free_array(char **array);
-int		exit_with_error(t_state *state, char *str);
-int		init_state(t_state *state);
-int		free_state(t_state *state);
-int		file_size(int fd);
 char	*get_next_line(int fd, int flag);
-int		txt_errors(t_state *state, char **my_map);
-int		free_txt(t_txt *txt);
-int		free_color(t_color *color);
-int		skip(char *str, int start);
-int		find_space(char *str);
 void	init_txt_color(t_txt *txt, t_color *color);
-int		find_char_from(char *str, char c, int start);
 int		assign_colors(t_color *color, char *line);
 
 #endif

@@ -6,12 +6,11 @@
 /*   By: mruiz-sa <mruiz-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 09:29:59 by mruiz-sa          #+#    #+#             */
-/*   Updated: 2023/01/10 12:07:13 by mruiz-sa         ###   ########.fr       */
+/*   Updated: 2023/01/11 11:12:31 by mruiz-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"cub3d.h"
-#include"libft.h"
 #include<stdlib.h>
 
 void	init_txt_color(t_txt *txt, t_color *color)

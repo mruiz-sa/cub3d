@@ -1,27 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.c                                            :+:      :+:    :+:   */
+/*   file.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mruiz-sa <mruiz-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/22 12:14:18 by mruiz-sa          #+#    #+#             */
-/*   Updated: 2023/01/11 11:05:40 by mruiz-sa         ###   ########.fr       */
+/*   Created: 2023/01/11 11:03:04 by mruiz-sa          #+#    #+#             */
+/*   Updated: 2023/01/11 11:09:26 by mruiz-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
-#include "state.h"
-#include "free_error.h"
-#include "file.h"
+#ifndef FILE_H
+# define FILE_H
 
-int	main(int ac, char **av)
-{
-	t_state	state;
+# include"cub3d.h"
 
-	if (!init_state(&state))
-		return (exit_with_error(&state, "Error initializing"));
-	if (arg_checker(ac, av))
-		return (1);
-	parse_file(av[1], &state);
-}
+int		parse_file(char *av, t_state *state);
+int		file_size(int fd);
+int		txt_file_check(char *route);
+int		ext_checker(char *str, char *ext);
+
+#endif

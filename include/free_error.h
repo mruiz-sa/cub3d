@@ -1,27 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.c                                            :+:      :+:    :+:   */
+/*   free_error.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mruiz-sa <mruiz-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/22 12:14:18 by mruiz-sa          #+#    #+#             */
-/*   Updated: 2023/01/11 11:05:40 by mruiz-sa         ###   ########.fr       */
+/*   Created: 2023/01/11 10:57:03 by mruiz-sa          #+#    #+#             */
+/*   Updated: 2023/01/11 11:00:20 by mruiz-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
-#include "state.h"
-#include "free_error.h"
-#include "file.h"
+#ifndef FREE_ERROR_H
+# define FREE_ERROR_H
 
-int	main(int ac, char **av)
-{
-	t_state	state;
+# include"cub3d.h"
 
-	if (!init_state(&state))
-		return (exit_with_error(&state, "Error initializing"));
-	if (arg_checker(ac, av))
-		return (1);
-	parse_file(av[1], &state);
-}
+int		free_txt(t_txt *txt);
+int		free_color(t_color *color);
+void	free_array(char **array);
+int		exit_with_error(t_state *state, char *str);
+void	file_error(char *av);
+int		txt_errors(t_state *state, char **my_map);
+
+#endif

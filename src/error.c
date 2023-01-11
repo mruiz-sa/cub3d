@@ -6,11 +6,12 @@
 /*   By: mruiz-sa <mruiz-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 09:43:14 by mruiz-sa          #+#    #+#             */
-/*   Updated: 2023/01/10 09:36:26 by mruiz-sa         ###   ########.fr       */
+/*   Updated: 2023/01/11 10:55:47 by mruiz-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+#include "state.h"
 #include<stdio.h>
 #include<stdlib.h>
 

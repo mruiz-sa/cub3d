@@ -6,13 +6,15 @@
 /*   By: mruiz-sa <mruiz-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 09:58:11 by mruiz-sa          #+#    #+#             */
-/*   Updated: 2023/01/10 14:18:55 by mruiz-sa         ###   ########.fr       */
+/*   Updated: 2023/01/11 11:08:34 by mruiz-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "cub3d.h"
-#include <fcntl.h>
+#include "file.h"
+#include "free_error.h"
+#include "str_tools.h"
 
 static int	assign_route(t_txt *txt, char *line)
 {
@@ -31,17 +33,6 @@ static int	assign_route(t_txt *txt, char *line)
 	return (1);
 }
 
-static int	txt_file_check(char *route)
-{
-	int	fd;
-
-	fd = open(route, O_RDONLY);
-	if (fd == -1)
-		return (0);
-	close(fd);
-	return (1);
-}
-
 static int	check_paths(t_txt *txt)
 {
 	if (!ext_checker(txt->north, ".xpm")
@@ -56,20 +47,31 @@ static int	check_paths(t_txt *txt)
 	return (1);
 }
 
-static int	txt_check(t_state *state, t_txt *txt, char **my_map)
+int	check_and_free(t_state *state, t_txt *txt, t_color *color, char **my_map)
 {
 	if (!txt->north || !txt->south || !txt->west || !txt->east)
 	{
 		free_txt(txt);
+		free_color(color);
 		free_array(my_map);
 		exit_with_error(state, "ERROR: MISSING TEXTURE");
 	}
-	if (!check_paths(txt))
+	else if (!check_paths(txt))
 	{
 		free_txt(txt);
+		free_color(color);
 		free_array(my_map);
 		exit_with_error(state, "ERROR: INVALID TEXTURE FILE");
 	}
+	else if (!color->ceiling_line || !color->floor_line)
+	{
+		free_txt(txt);
+		free_color(color);
+		free_array(my_map);
+		exit_with_error(state, "ERROR: MISSING COLOUR");
+	}
+	free_txt(txt);
+	free_color(color);
 	return (1);
 }
 
@@ -98,8 +100,6 @@ int	txt_errors(t_state *state, char **my_map)
 			i++;
 		}
 	}
-	txt_check(state, &txt, my_map);
-	free_txt(&txt);
-	free_color(&color);
+	check_and_free(state, &txt, &color, my_map);
 	return (1);
 }

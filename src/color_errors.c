@@ -6,12 +6,14 @@
 /*   By: mruiz-sa <mruiz-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 10:32:44 by mruiz-sa          #+#    #+#             */
-/*   Updated: 2023/01/10 14:22:40 by mruiz-sa         ###   ########.fr       */
+/*   Updated: 2023/01/11 11:08:22 by mruiz-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "cub3d.h"
+#include "free_error.h"
+#include "str_tools.h"
 
 static int	save_digits(char *line, int clrs[3])
 {
@@ -32,7 +34,7 @@ static int	save_digits(char *line, int clrs[3])
 	{
 		clrs[i] = ft_atoi_reduced(digits[i]);
 		if (clrs[i] == -1)
-			return (0);
+			return (free_array(digits), 0);
 		i++;
 	}
 	free_array(digits);
