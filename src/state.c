@@ -6,12 +6,13 @@
 /*   By: mruiz-sa <mruiz-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 10:03:42 by mruiz-sa          #+#    #+#             */
-/*   Updated: 2023/01/12 10:11:02 by mruiz-sa         ###   ########.fr       */
+/*   Updated: 2023/01/12 13:20:49 by mruiz-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "cub3d.h"
+#include "free_error.h"
 #include <stdlib.h>
 
 int	init_state(t_state *state)

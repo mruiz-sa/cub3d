@@ -6,7 +6,7 @@
 /*   By: mruiz-sa <mruiz-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 09:23:08 by mruiz-sa          #+#    #+#             */
-/*   Updated: 2023/01/12 12:19:57 by mruiz-sa         ###   ########.fr       */
+/*   Updated: 2023/01/12 13:21:18 by mruiz-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,12 +68,6 @@ static char	**copy_map(t_state *state, t_file *file, char *av)
 	if (my_map[i] != NULL)
 		my_map[i + 1] = NULL;
 	close(file->fd);
-	i = 0;
-	while (my_map[i])
-	{
-		printf("%s", my_map[i]);
-		i++;
-	}
 	return (my_map);
 }
 
