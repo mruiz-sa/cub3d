@@ -6,7 +6,7 @@
 /*   By: mruiz-sa <mruiz-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 12:26:52 by mruiz-sa          #+#    #+#             */
-/*   Updated: 2023/01/11 12:36:58 by mruiz-sa         ###   ########.fr       */
+/*   Updated: 2023/01/12 12:02:53 by mruiz-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,13 @@ int	skip(char *str, int start)
 	return (i);
 }
 
-void	check_last_line(char *str, char **my_map, t_state *state, t_file *file)
+char	*check_last_line(char *str, char **my_map, t_state *state, t_file *file)
 {
 	int	i;
 
 	i = 0;
 	if (!str)
-		return ;
+		return (NULL);
 	if (str[0] != 'N' && str[0] != 'S' && str[0] != 'E'
 		&& str[0] != 'W' && str[0] != '\n' && str[0] != '1'
 		&& str[0] != 'F' && str[0] != 'C')
@@ -51,5 +51,7 @@ void	check_last_line(char *str, char **my_map, t_state *state, t_file *file)
 		free_array(my_map);
 		close(file->fd);
 		exit_with_error(state, "INVALID LINE IN FILE");
+		return (NULL);
 	}
+	return (str);
 }
