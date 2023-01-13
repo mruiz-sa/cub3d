@@ -6,7 +6,7 @@
 /*   By: mruiz-sa <mruiz-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 09:58:11 by mruiz-sa          #+#    #+#             */
-/*   Updated: 2023/01/13 10:38:48 by mruiz-sa         ###   ########.fr       */
+/*   Updated: 2023/01/13 11:45:21 by mruiz-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,22 +73,18 @@ int	check_and_free(t_state *state, t_txt *txt, t_color *color, char **my_map)
 
 int	txt_color_errors(t_state *state, t_file *file, char **my_map)
 {
-	t_txt	txt;
-	t_color	color;
 	int		i;
 
-	state->txt = &txt;
-	state->color = &color;
 	i = 0;
-	init_txt_color(&txt, &color);
+	init_txt_color(&state->txt, &state->color);
 	while (my_map[i])
 	{
 		if (my_map[i][0] == '\n')
 			i++;
 		else
 		{
-			assign_route(&txt, file, my_map[i], i);
-			if (!assign_colors(&color, file, my_map[i], i))
+			assign_route(&state->txt, file, my_map[i], i);
+			if (!assign_colors(&state->color, file, my_map[i], i))
 			{
 				free_array(my_map);
 				exit_with_error(state, "ERROR: COLOUR ERROR");
@@ -96,6 +92,6 @@ int	txt_color_errors(t_state *state, t_file *file, char **my_map)
 			i++;
 		}
 	}
-	check_and_free(state, &txt, &color, my_map);
+	check_and_free(state, &state->txt, &state->color, my_map);
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: mruiz-sa <mruiz-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 12:31:05 by mruiz-sa          #+#    #+#             */
-/*   Updated: 2023/01/13 10:43:15 by mruiz-sa         ###   ########.fr       */
+/*   Updated: 2023/01/13 11:43:51 by mruiz-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ typedef struct s_file
 
 typedef struct s_state
 {
-	t_txt	*txt;
-	t_color	*color;
+	t_txt	txt;
+	t_color	color;
 	char	**only_map;
 
 }	t_state;
