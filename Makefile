@@ -1,12 +1,12 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
+#    Makefile_long                                      :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: amarzana <amarzana@student.42.fr>          +#+  +:+       +#+         #
+#    By: mruiz-sa <mruiz-sa@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/22 10:34:08 by mruiz-sa          #+#    #+#              #
-#    Updated: 2023/01/13 12:26:17 by amarzana         ###   ########.fr        #
+#    Updated: 2023/01/13 12:37:03 by mruiz-sa         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,7 @@ SRC = 	src/checkers.c					\
 		src/hooks.c						\
 		src/init_free.c					\
 		src/loops.c						\
+		src/map_errors.c				\
 		src/map_tools.c					\
 		src/mlx_utils.c 				\
 		src/moves.c						\
