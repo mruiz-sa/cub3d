@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   txt_errors.c                                       :+:      :+:    :+:   */
+/*   txt_color_errors.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mruiz-sa <mruiz-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 09:58:11 by mruiz-sa          #+#    #+#             */
-/*   Updated: 2023/01/11 11:27:31 by mruiz-sa         ###   ########.fr       */
+/*   Updated: 2023/01/13 09:31:22 by mruiz-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,22 @@
 #include "free_error.h"
 #include "str_tools.h"
 
-static int	assign_route(t_txt *txt, char *line)
+static int	assign_route(t_txt *txt, t_file *file, char *line, int i)
 {
-	if (line && !ft_strncmp(line, "NO", 2) && !txt->north)
+	if (line && !ft_strncmp(line, "NO", 2) && !txt->north
+		&& i < file->map_start)
 		txt->north = ft_substr(line, skip(line, find_space(line)),
 				ft_strlen(line) - skip(line, find_space(line)) - 1);
-	else if (line && !ft_strncmp(line, "SO", 2) && !txt->south)
+	else if (line && !ft_strncmp(line, "SO", 2) && !txt->south
+		&& i < file->map_start)
 		txt->south = ft_substr(line, skip(line, find_space(line)),
 				ft_strlen(line) - skip(line, find_space(line)) - 1);
-	else if (line && !ft_strncmp(line, "WE", 2) && !txt->west)
+	else if (line && !ft_strncmp(line, "WE", 2) && !txt->west
+		&& i < file->map_start)
 		txt->west = ft_substr(line, skip(line, find_space(line)),
 				ft_strlen(line) - skip(line, find_space(line)) - 1);
-	else if (line && !ft_strncmp(line, "EA", 2) && !txt->east)
+	else if (line && !ft_strncmp(line, "EA", 2) && !txt->east
+		&& i < file->map_start)
 		txt->east = ft_substr(line, skip(line, find_space(line)),
 				ft_strlen(line) - skip(line, find_space(line)) - 1);
 	return (1);
@@ -75,7 +79,7 @@ int	check_and_free(t_state *state, t_txt *txt, t_color *color, char **my_map)
 	return (1);
 }
 
-int	txt_color_errors(t_state *state, char **my_map)
+int	txt_color_errors(t_state *state, t_file *file, char **my_map)
 {
 	t_txt	txt;
 	t_color	color;
@@ -89,8 +93,8 @@ int	txt_color_errors(t_state *state, char **my_map)
 			i++;
 		else
 		{
-			assign_route(&txt, my_map[i]);
-			if (!assign_colors(&color, my_map[i]))
+			assign_route(&txt, file, my_map[i], i);
+			if (!assign_colors(&color, file, my_map[i],  i))
 			{
 				free_array(my_map);
 				free_txt(&txt);

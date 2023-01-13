@@ -6,7 +6,7 @@
 /*   By: mruiz-sa <mruiz-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 09:59:49 by mruiz-sa          #+#    #+#             */
-/*   Updated: 2023/01/12 13:23:27 by mruiz-sa         ###   ########.fr       */
+/*   Updated: 2023/01/13 09:38:54 by mruiz-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ static int	copy_just_map(t_map *map, t_file *file, char **my_map)
 	while (i <= file->map_end && my_map[i])
 	{
 		map->only_map[j] = my_map[i];
+		printf("%s", map->only_map[j]);
 		i++;
 		j++;
 	}

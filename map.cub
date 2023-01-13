@@ -3,8 +3,8 @@ EA ./text/east_texture.xpm
 WE ./text/west_texture.xpm
 SO ./text/south_texture.xpm
 
-F 20,30,50
-C 225,30,7
+F 20,30,250
+C 225,30,8
 
 
 

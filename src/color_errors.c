@@ -6,7 +6,7 @@
 /*   By: mruiz-sa <mruiz-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 10:32:44 by mruiz-sa          #+#    #+#             */
-/*   Updated: 2023/01/11 11:08:22 by mruiz-sa         ###   ########.fr       */
+/*   Updated: 2023/01/13 09:36:43 by mruiz-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,13 @@ static int	save_digits(char *line, int clrs[3])
 	return (1);
 }
 
-int	assign_colors(t_color *color, char *line)
+int	assign_colors(t_color *color, t_file *file, char *line, int i)
 {
+	(void)file;
+	(void)i;
 	if (line && !ft_strncmp(line, "F", 1) && (color->floor[0] == -1
-			|| color->floor[1] == -1 || color->floor[2] == -1))
+			|| color->floor[1] == -1 || color->floor[2] == -1)
+		&& i < file->map_start)
 	{
 		color->floor_line = ft_substr(line, skip(line, find_space(line)),
 				ft_strlen(line) - skip(line, find_space(line)) - 1);
@@ -52,7 +55,8 @@ int	assign_colors(t_color *color, char *line)
 			return (0);
 	}
 	else if (line && !ft_strncmp(line, "C", 1) && (color->ceiling[0] == -1
-			|| color->ceiling[1] == -1 || color->ceiling[2] == -1))
+			|| color->ceiling[1] == -1 || color->ceiling[2] == -1)
+		&& i < file->map_start)
 	{
 		color->ceiling_line = ft_substr(line, skip(line, find_space(line)),
 				ft_strlen(line) - skip(line, find_space(line)) - 1);

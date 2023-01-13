@@ -6,7 +6,7 @@
 /*   By: mruiz-sa <mruiz-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 12:31:05 by mruiz-sa          #+#    #+#             */
-/*   Updated: 2023/01/12 13:18:43 by mruiz-sa         ###   ########.fr       */
+/*   Updated: 2023/01/13 09:32:46 by mruiz-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,6 @@ typedef struct s_state
 int		arg_checker(int ac, char **av);
 char	*get_next_line(int fd);
 void	init_txt_color(t_txt *txt, t_color *color);
-int		assign_colors(t_color *color, char *line);
+int		assign_colors(t_color *color, t_file *file, char *line, int i);
 int		parse_map(t_state *state, t_file *file, char **my_map);
 #endif
