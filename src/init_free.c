@@ -6,11 +6,12 @@
 /*   By: mruiz-sa <mruiz-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 09:29:59 by mruiz-sa          #+#    #+#             */
-/*   Updated: 2023/01/12 13:14:40 by mruiz-sa         ###   ########.fr       */
+/*   Updated: 2023/01/13 10:05:42 by mruiz-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"cub3d.h"
+#include"libft.h"
 #include<stdlib.h>
 
 void	init_txt_color(t_txt *txt, t_color *color)
@@ -31,15 +32,20 @@ void	init_txt_color(t_txt *txt, t_color *color)
 
 int	free_color(t_color *color)
 {
+	if (!color)
+		return (0);
 	if (color->ceiling_line)
 		free(color->ceiling_line);
 	if (color->floor_line)
 		free(color->floor_line);
+	ft_memset(color, 0, sizeof(t_color));
 	return (1);
 }
 
 int	free_txt(t_txt *txt)
 {
+	if (!txt)
+		return (0);
 	if (txt->north)
 		free(txt->north);
 	if (txt->south)
@@ -48,6 +54,7 @@ int	free_txt(t_txt *txt)
 		free(txt->east);
 	if (txt->west)
 		free(txt->west);
+	ft_memset(txt, 0, sizeof(t_txt));
 	return (1);
 }
 

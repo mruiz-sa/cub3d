@@ -6,7 +6,7 @@
 /*   By: mruiz-sa <mruiz-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 09:58:11 by mruiz-sa          #+#    #+#             */
-/*   Updated: 2023/01/13 09:31:22 by mruiz-sa         ###   ########.fr       */
+/*   Updated: 2023/01/13 10:38:48 by mruiz-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,27 +55,19 @@ int	check_and_free(t_state *state, t_txt *txt, t_color *color, char **my_map)
 {
 	if (!txt->north || !txt->south || !txt->west || !txt->east)
 	{
-		free_txt(txt);
-		free_color(color);
 		free_array(my_map);
 		exit_with_error(state, "ERROR: MISSING TEXTURE");
 	}
 	else if (!check_paths(txt))
 	{
-		free_txt(txt);
-		free_color(color);
 		free_array(my_map);
 		exit_with_error(state, "ERROR: INVALID TEXTURE FILE");
 	}
 	else if (!color->ceiling_line || !color->floor_line)
 	{
-		free_txt(txt);
-		free_color(color);
 		free_array(my_map);
 		exit_with_error(state, "ERROR: MISSING COLOUR");
 	}
-	free_txt(txt);
-	free_color(color);
 	return (1);
 }
 
@@ -85,6 +77,8 @@ int	txt_color_errors(t_state *state, t_file *file, char **my_map)
 	t_color	color;
 	int		i;
 
+	state->txt = &txt;
+	state->color = &color;
 	i = 0;
 	init_txt_color(&txt, &color);
 	while (my_map[i])
@@ -94,11 +88,9 @@ int	txt_color_errors(t_state *state, t_file *file, char **my_map)
 		else
 		{
 			assign_route(&txt, file, my_map[i], i);
-			if (!assign_colors(&color, file, my_map[i],  i))
+			if (!assign_colors(&color, file, my_map[i], i))
 			{
 				free_array(my_map);
-				free_txt(&txt);
-				free_color(&color);
 				exit_with_error(state, "ERROR: COLOUR ERROR");
 			}
 			i++;

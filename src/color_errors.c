@@ -6,7 +6,7 @@
 /*   By: mruiz-sa <mruiz-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 10:32:44 by mruiz-sa          #+#    #+#             */
-/*   Updated: 2023/01/13 09:36:43 by mruiz-sa         ###   ########.fr       */
+/*   Updated: 2023/01/13 10:37:54 by mruiz-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,6 @@ static int	save_digits(char *line, int clrs[3])
 
 int	assign_colors(t_color *color, t_file *file, char *line, int i)
 {
-	(void)file;
-	(void)i;
 	if (line && !ft_strncmp(line, "F", 1) && (color->floor[0] == -1
 			|| color->floor[1] == -1 || color->floor[2] == -1)
 		&& i < file->map_start)
