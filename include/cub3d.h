@@ -6,7 +6,7 @@
 /*   By: amarzana <amarzana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 12:31:05 by mruiz-sa          #+#    #+#             */
-/*   Updated: 2023/01/13 12:20:19 by amarzana         ###   ########.fr       */
+/*   Updated: 2023/01/16 13:19:30 by amarzana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,17 +43,17 @@ typedef struct s_key
 
 typedef struct s_tex
 {
-	int					texw;			//Width of textures
-	int					texh;			//Height of textures
+	int					texw;				//Width of textures
+	int					texh;				//Height of textures
 	int					buffer[480][640];	//Screen buffer[height][width]
-	int					*texture[4];	//Addr of the 4 textures
-	void				*tex_ptr[4];	//Ptr of the 4 textures
-	int					tex_num;		//value of the current map square minus 1
-	double				wallx;			//exact value where the wall was hit
-	int					tex_x;			//x coordinate on the texture 
-	double				step;			//How much to increase the texture coordinate per screen pixel
-	double				tex_pos;		//Starting texture coordinate
-	int					tex_y;			//y coordinate on the texture
+	int					*texture[4];		//Addr of the 4 textures
+	void				*tex_ptr[4];		//Ptr of the 4 textures
+	int					tex_num;			//value of the current map square minus 1
+	double				wallx;				//exact value where the wall was hit
+	int					tex_x;				//x coordinate on the texture 
+	double				step;				//How much to increase the texture coordinate per screen pixel
+	double				tex_pos;			//Starting texture coordinate
+	int					tex_y;				//y coordinate on the texture
 	int					tex_color;
 }				t_tex;
 
@@ -88,30 +88,6 @@ typedef struct s_parse
 	char				**map;
 }				t_parse;
 
-typedef struct s_control
-{
-	int					height;
-	int					width;
-	unsigned long		ceiling;
-	unsigned long		floor;
-	double				pos_x;			//Player start position
-	double				pos_y;			//Player start position
-	double				dir_x;			//Player direction
-	double				dir_y;			//Player direction
-	double				plane_x;		//Camera plane
-	double				plane_y;		//Camera plane
-	double				time;			//Actual time
-	double				old_time;		//Previous time
-	double				frametime;		//Time between frames
-	double				movespeed;		//Movespeed proportional to frametime
-	double				rotspeed;		//Rotspeed proportional to frametime
-	t_data				*data;			//Struct for mlx parameters
-	t_key				*key;			//Struct for input status
-	t_tex				*tex;			//Struct for textures
-	t_ray				*ray;			//Struct for raycasting
-	t_parse				*parse;			//Mikel
-}					t_control;
-
 typedef struct s_txt
 {
 	char	*north;
@@ -143,14 +119,40 @@ typedef struct s_state
 
 }	t_state;
 
-int		arg_checker(int ac, char **av);
-char	*get_next_line(int fd);
-void	init_txt_color(t_txt *txt, t_color *color);
-int		assign_colors(t_color *color, t_file *file, char *line, int i);
-int		parse_map(t_state *state, t_file *file, char **my_map);
+typedef struct s_control
+{
+	int					height;
+	int					width;
+	unsigned long		ceiling;
+	unsigned long		floor;
+	char				player;
+	double				pos_x;			//Player start position
+	double				pos_y;			//Player start position
+	double				dir_x;			//Player direction
+	double				dir_y;			//Player direction
+	double				plane_x;		//Camera plane
+	double				plane_y;		//Camera plane
+	double				time;			//Actual time
+	double				old_time;		//Previous time
+	double				frametime;		//Time between frames
+	double				movespeed;		//Movespeed proportional to frametime
+	double				rotspeed;		//Rotspeed proportional to frametime
+	t_data				*data;			//Struct for mlx parameters
+	t_key				*key;			//Struct for input status
+	t_tex				*tex;			//Struct for textures
+	t_ray				*ray;			//Struct for raycasting
+	t_state				*state;			//Mikel
+}					t_control;
+
+int				arg_checker(int ac, char **av);
+char			*get_next_line(int fd);
+void			init_txt_color(t_txt *txt, t_color *color);
+int				assign_colors(t_color *color, t_file *file, char *line, int i);
+int				parse_map(t_state *state, t_file *file, char **my_map);
 
 //cub3d.c
 long			ft_get_time(void);
+void			print_map(char **map);
 
 //hooks.c
 int				key_press(int key, t_control *ctr);
@@ -158,7 +160,7 @@ int				key_release(int key, t_control *ctr);
 int				exit_mlx(t_control *ctr);
 
 //map_tools.c
-char			map_player(t_parse *parse);
+char			map_player(t_control *ctr);
 
 //loops.c
 void			calculate_frametime(t_control *ctr);
