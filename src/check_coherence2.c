@@ -6,11 +6,11 @@
 /*   By: amarzana <amarzana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 13:36:59 by amarzana          #+#    #+#             */
-/*   Updated: 2023/01/17 14:37:28 by amarzana         ###   ########.fr       */
+/*   Updated: 2023/01/18 08:33:51 by amarzana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
+#include "cub3d.h"
 
 void	check_map_limit_rev(char **my_map, t_coher *c, int i)
 {
