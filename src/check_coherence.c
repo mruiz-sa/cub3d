@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_coherence.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amarzana <amarzana@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mruiz-sa <mruiz-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 10:39:21 by amarzana          #+#    #+#             */
-/*   Updated: 2023/01/18 09:27:43 by amarzana         ###   ########.fr       */
+/*   Updated: 2023/01/18 10:10:24 by mruiz-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ void	check_coherence(t_state *state, char **my_map)
 	if (c.error == 1)
 		exit_with_error(state, "ERROR: DUPLICATED PARAMETER");
 	else if (c.error == 2)
-		exit_with_error(state, "ERROR: MAP BEFORE PARAMETERS");
+		exit_with_error(state, "ERROR: MISSING PARAMETER BEFORE MAP");
 	else if (c.error == 3)
 		exit_with_error(state, "ERROR: WRONG PARAMETERS");
 	else if (c.error == 4)
