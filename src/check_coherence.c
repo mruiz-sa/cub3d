@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   check_coherence.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mruiz-sa <mruiz-sa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: amarzana <amarzana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 10:39:21 by amarzana          #+#    #+#             */
-/*   Updated: 2023/01/18 10:10:24 by mruiz-sa         ###   ########.fr       */
+/*   Updated: 2023/01/18 10:31:20 by amarzana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "free_error.h"
+#include "checkers.h"
 #include "cub3d.h"
 #include "libft.h"
 #include <fcntl.h>

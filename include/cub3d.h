@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mruiz-sa <mruiz-sa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: amarzana <amarzana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 12:31:05 by mruiz-sa          #+#    #+#             */
-/*   Updated: 2023/01/18 09:47:57 by mruiz-sa         ###   ########.fr       */
+/*   Updated: 2023/01/18 10:30:43 by amarzana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,16 +153,17 @@ typedef struct s_coher
 	int					player;
 }					t_coher;
 
-int				arg_checker(int ac, char **av);
+//get_next_line.c
 char			*get_next_line(int fd);
+
+//init_free.c
 void			init_txt_color(t_txt *txt, t_color *color);
+
+//color_errors.c
 int				assign_colors(t_color *color, t_file *file, char *line, int i);
-int				parse_map(t_state *state, t_file *file, char **my_map);
-void			check_coherence(t_state *state, char **my_map);
-void			check_map_limit_rev(char **my_map, t_coher *c, int i);
-void			check_map_limit(char **my_map, t_coher *c);
+
+//cub3d.c
 long			ft_get_time(void);
-void			print_map(char **map);
 
 //hooks.c
 int				key_press(int key, t_control *ctr);
@@ -209,7 +210,6 @@ void			destroy_textures(t_control *ctr);
 
 //utils.c
 void			get_orientation(t_control *ctr);
-void			init_parse(t_parse *parse);
 unsigned long	rgb_to_hex(int red, int green, int blue);
 void			init_control(t_control *control);
 void			init_key(t_key *key);

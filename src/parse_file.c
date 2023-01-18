@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_file.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mruiz-sa <mruiz-sa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: amarzana <amarzana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 09:23:08 by mruiz-sa          #+#    #+#             */
-/*   Updated: 2023/01/18 10:05:54 by mruiz-sa         ###   ########.fr       */
+/*   Updated: 2023/01/18 10:32:39 by amarzana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include "free_error.h"
 #include "file.h"
 #include "str_tools.h"
+#include "checkers.h"
 #include <fcntl.h>
 
 static void	get_size(char *av, t_file *file)
